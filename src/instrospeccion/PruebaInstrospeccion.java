@@ -50,13 +50,60 @@ public class PruebaInstrospeccion {
 		
 	}
 	
+	private static void imprimirCampos(Class cl) {
+		
+		Field [] campos = cl.getDeclaredFields();
+		
+		for(Field f: campos) {
+			
+			Class tipoCampo = f.getType();
+			
+			String nombre = f.getName();
+			
+			System.out.print(" " + Modifier.toString(f.getModifiers()));
+			
+			System.out.println(" " + tipoCampo.getName() + " " + nombre + ";");
+		}
+		
+	}
+
+	// Imprime todos los métodos de las clases
+	private static void imprimirMetodos(Class cl) {
+		
+		Method [] metodos = cl.getDeclaredMethods();
+		
+		for(Method m: metodos){
+			Class tipoDevuelto = m.getReturnType();
+			
+			String nombre = m.getName();
+			
+			// Imprime modificadores, tipo y nombre
+			System.out.print(" " + Modifier.toString(m.getModifiers()));
+			
+			System.out.print(" " + tipoDevuelto.getName() + " " + nombre + "(");
+			
+			// Imprime tipo parámetros
+			
+			Class [] tipoParams = m.getParameterTypes();
+			
+			for(int i = 0; i<tipoParams.length; i++) {
+				if(i>0) System.out.print(", ");
+				
+				System.out.print(tipoParams[i].getName());
+			}
+			
+			System.out.println(");");
+		}
+		
+	}
+
 	public static void imprimirConstructores(Class cl) {
 		Constructor[] constructores = cl.getDeclaredConstructors();
 		
 		for(Constructor c: constructores) {
 			String nombre = c.getName(); 
 			
-			System.out.print("  " + Modifier.toString(c.getModifiers()));
+			System.out.print(" " + Modifier.toString(c.getModifiers()));
 			
 			System.out.print(" " + nombre + "(");
 			
