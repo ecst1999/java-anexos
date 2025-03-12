@@ -3,6 +3,12 @@ package instrospeccion;
 import java.lang.reflect.*;
 import java.util.*;
 
+/**
+ * 
+ * Esta clase pretende obtener los datos de una clase utilizando la Introspección
+ * @author ecst1999
+ */
+
 public class PruebaInstrospeccion {
 
 	public static void main(String[] args) {
@@ -50,6 +56,11 @@ public class PruebaInstrospeccion {
 		
 	}
 	
+	/**
+	 * Método clave para imprimir los campos de una clase
+	 * @param cl Este parámetro permitira obtener los datos de la clase
+	 */
+	
 	private static void imprimirCampos(Class cl) {
 		
 		Field [] campos = cl.getDeclaredFields();
@@ -67,7 +78,10 @@ public class PruebaInstrospeccion {
 		
 	}
 
-	// Imprime todos los métodos de las clases
+	/**
+	 *  Imprime todos los métodos de las clases
+	 *  @param cl 
+	 */
 	private static void imprimirMetodos(Class cl) {
 		
 		Method [] metodos = cl.getDeclaredMethods();
@@ -97,6 +111,10 @@ public class PruebaInstrospeccion {
 		
 	}
 
+	/**
+	 * 
+	 * @param cl
+	 */
 	public static void imprimirConstructores(Class cl) {
 		Constructor[] constructores = cl.getDeclaredConstructors();
 		
